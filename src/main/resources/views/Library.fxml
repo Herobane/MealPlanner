@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -31,4 +33,21 @@
          </children>
       </AnchorPane>
    </top>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ListView prefHeight="200.0" prefWidth="400.0" HBox.hgrow="ALWAYS" />
+            <VBox prefHeight="360.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label text="Meal name">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
 </BorderPane>

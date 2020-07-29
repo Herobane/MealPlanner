@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class MainController implements Initializable {
 	
+	//	***** FXML ELEMENTS *****
 	@FXML
 	private MenuBar menuBar;
 	
@@ -44,6 +45,8 @@ public class MainController implements Initializable {
 			
 			Parent library = FXMLLoader.load(getClass().getResource("/views/Library.fxml"));
 			libraryPane.getChildren().add(library);
+			
+			// TODO : Planning Tab
 			
 		} catch (IOException e) {
 			e.printStackTrace();

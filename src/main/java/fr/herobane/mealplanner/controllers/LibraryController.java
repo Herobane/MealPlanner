@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 
 public class LibraryController implements Initializable {
 
+	//	***** FXML ELEMENTS *****
 	@FXML
 	private Button addButton;
 	@FXML
@@ -18,6 +19,7 @@ public class LibraryController implements Initializable {
 	@FXML
 	private Button updateButton;
 	
+	// ***** OTHER CONTROLS *****
 	private ImageView addButtonIcon;
 	private ImageView deleteButtonIcon;
 	private ImageView updateButtonIcon;
@@ -32,6 +34,9 @@ public class LibraryController implements Initializable {
 		addButton.setGraphic(addButtonIcon);
 		deleteButton.setGraphic(deleteButtonIcon);
 		updateButton.setGraphic(updateButtonIcon);
+		
+		// TODO : populate ListView
+		
 	}
 	
 }
