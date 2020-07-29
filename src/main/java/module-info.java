@@ -5,5 +5,7 @@ module mealplanner.core {
 	requires javafx.fxml;
 	
 	opens fr.herobane.mealplanner to javafx.fxml;
+	opens fr.herobane.mealplanner.controllers to javafx.fxml;
+	
 	exports fr.herobane.mealplanner;
 }

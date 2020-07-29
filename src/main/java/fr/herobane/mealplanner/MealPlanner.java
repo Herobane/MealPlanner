@@ -22,6 +22,7 @@ public class MealPlanner extends Application {
 		
 		primaryStage.setTitle("MealPlanner");
 		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
 		primaryStage.show();
 		
 	}
