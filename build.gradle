@@ -15,7 +15,8 @@ plugins {
 }
 
 application {
-	mainClassName = "$moduleName/fr.herobane.mealplanner.MealPlanner"
+	mainClassName = "fr.herobane.mealplanner.MealPlanner"
+	mainModule = "mealplanner.core"
 }
 
 javafx {
