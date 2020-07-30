@@ -1,23 +1,32 @@
 package fr.herobane.mealplanner.controllers;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import fr.herobane.mealplanner.models.beans.Meal;
+import fr.herobane.mealplanner.models.dao.MealDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class LibraryController implements Initializable {
+public class LibraryController extends Controller implements Initializable {
 
-	//	***** FXML ELEMENTS *****
+	private MealDAO mealDAO;
+	
+	// ***** FXML ELEMENTS *****
 	@FXML
 	private Button addButton;
 	@FXML
 	private Button deleteButton;
 	@FXML
 	private Button updateButton;
+	
+	@FXML
+	private ListView<Meal> mealListView;
 	
 	// ***** OTHER CONTROLS *****
 	private ImageView addButtonIcon;
@@ -35,8 +44,29 @@ public class LibraryController implements Initializable {
 		deleteButton.setGraphic(deleteButtonIcon);
 		updateButton.setGraphic(updateButtonIcon);
 		
-		// TODO : populate ListView
+		mealDAO = new MealDAO();
 		
+		try {
+			mealListView.setItems(mealDAO.getMeals());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	// TODO : MealEditor part
+	// ***** FXML ELEMENTS HANDLING *****
+	@FXML
+	private void handleAddButton() {
+		mainController.toggleLibraryPane();
+	}
+	
+	@FXML
+	private void handleDeleteButton() {
+		mealDAO.delete(mealListView.getSelectionModel().getSelectedItem());
+	}
+	
+	@FXML
+	private void handleUpdateButton() {
+		// TODO : edit button
 	}
 	
 }

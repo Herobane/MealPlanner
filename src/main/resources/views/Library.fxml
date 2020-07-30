@@ -13,17 +13,17 @@
          <children>
             <ToolBar prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
               <items>
-                <Button fx:id="addButton" mnemonicParsing="false" text="  Add new meal...">
+                <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAddButton" text="  Add new meal...">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="deleteButton" mnemonicParsing="false" text="  Delete meal">
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDeleteButton" text="  Delete meal">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="updateButton" mnemonicParsing="false" text="  Edit meal">
+                  <Button fx:id="updateButton" mnemonicParsing="false" onAction="#handleUpdateButton" text="  Edit meal">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -36,7 +36,7 @@
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView prefHeight="200.0" prefWidth="400.0" HBox.hgrow="ALWAYS" />
+            <ListView fx:id="mealListView" prefHeight="200.0" prefWidth="400.0" HBox.hgrow="ALWAYS" />
             <VBox prefHeight="360.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
                   <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />

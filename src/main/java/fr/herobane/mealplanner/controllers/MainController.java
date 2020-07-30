@@ -13,9 +13,15 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 
-public class MainController implements Initializable {
+public class MainController extends Controller implements Initializable {
 	
-	//	***** FXML ELEMENTS *****
+	LibraryController libraryController;
+	MealEditorController mealEditorController;
+	
+	private Parent library;
+	private Parent mealEditor;
+	
+	// ***** FXML ELEMENTS *****
 	@FXML
 	private MenuBar menuBar;
 	
@@ -43,13 +49,35 @@ public class MainController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
 			
-			Parent library = FXMLLoader.load(getClass().getResource("/views/Library.fxml"));
+			FXMLLoader libraryLoader = new FXMLLoader(getClass().getResource("/views/Library.fxml"));
+			FXMLLoader mealEditorLoader = new FXMLLoader(getClass().getResource("/views/MealEditor.fxml"));
+			
+			library = libraryLoader.load();
+			mealEditor = mealEditorLoader.load();
+			
+			libraryController = libraryLoader.getController();
+			mealEditorController = mealEditorLoader.getController();
+			
+			libraryController.setMainController(this);
+			mealEditorController.setMainController(this);
+			
 			libraryPane.getChildren().add(library);
 			
 			// TODO : Planning Tab
 			
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	// FIXME
+	public void toggleLibraryPane() {
+		if(libraryPane.getChildren().get(0).equals(library)) {
+			libraryPane.getChildren().clear();
+			libraryPane.getChildren().add(mealEditor);
+		}
+		else {
+			libraryPane.getChildren().clear();
+			libraryPane.getChildren().add(library);
 		}
 	}
 
