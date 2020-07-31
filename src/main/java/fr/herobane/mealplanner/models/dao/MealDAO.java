@@ -84,18 +84,18 @@ public class MealDAO extends DAO<Meal> {
 		return null;
 	}
 	
+	/**
+	 * Fetch the database and populate meals {@code ObservableList} according to request's results
+	 * @return a list containing fetched meals
+	 * @throws SQLException
+	 */
 	public ObservableList<Meal> getMeals() throws SQLException {
 		meals.clear();
 		
 		ResultSet result = this.connection.createStatement().executeQuery("SELECT * FROM meals");
 		
 		while(result.next()) {
-			Meal meal = new Meal(result.getString("meal_name"));
-			meal.setID(result.getLong("meal_id"));
-			meal.setLunch(result.getBoolean("meal_lunch"));
-			meal.setDinner(result.getBoolean("meal_dinner"));
-
-			meals.add(meal);
+			meals.add(new Meal(result.getLong("meal_id"), result.getString("meal_name"), result.getBoolean("meal_lunch"), result.getBoolean("meal_dinner")));
 		}
 		
 		return meals;

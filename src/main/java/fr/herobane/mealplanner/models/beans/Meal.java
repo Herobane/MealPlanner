@@ -29,6 +29,13 @@ public class Meal {
 		isDinner = new SimpleBooleanProperty();
 	}
 	
+	public Meal(long ID, String name, boolean isLunch, boolean isDinner) {
+		this.ID = new SimpleLongProperty(ID);
+		this.name = new SimpleStringProperty(name);
+		this.isLunch = new SimpleBooleanProperty(isLunch);
+		this.isDinner = new SimpleBooleanProperty(isDinner);
+	}
+	
 	@Override
 	public String toString() {
 		return getName() + " " + (this.isLunch() ? "lunch" : "nlunch") + " " + (this.isDinner() ? "dinner" : "ndinner");

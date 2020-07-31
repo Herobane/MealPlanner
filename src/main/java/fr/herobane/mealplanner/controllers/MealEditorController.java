@@ -16,6 +16,10 @@ public class MealEditorController extends Controller implements Initializable {
 
 	private MealDAO mealDAO;
 	
+	// Fields for edit mode
+	private boolean editMode;
+	private Meal lastSelected;
+	
 	@FXML
 	private Button browseButton;
 	@FXML
@@ -39,19 +43,35 @@ public class MealEditorController extends Controller implements Initializable {
 		mealDAO = new MealDAO();
 	}
 	
+	public void initEditMode(Meal selectedMeal) {
+		editMode = true;
+		lastSelected = selectedMeal;
+		
+		mealNameField.setText(selectedMeal.getName());
+		mealLunchCheck.setSelected(selectedMeal.isLunch());
+		mealDinnerCheck.setSelected(selectedMeal.isDinner());
+	}
+	
+	public void initAddMode() {
+		editMode = false;
+		
+		mealNameField.setText("");
+		mealLunchCheck.setSelected(false);
+		mealDinnerCheck.setSelected(false);
+	}
+	
 	@FXML
 	private void handleConfirmButton() {
 		Meal lastMeal = new Meal(mealNameField.getText());
 		lastMeal.setLunch(mealLunchCheck.isSelected());
 		lastMeal.setDinner(mealDinnerCheck.isSelected());
 		
-		mealDAO.create(lastMeal);
+		if(!editMode)
+			mealDAO.create(lastMeal);
+		else
+			mealDAO.update(lastSelected.getID(), lastMeal);
 		
-		mealNameField.setText("");
-		mealLunchCheck.setSelected(false);
-		mealDinnerCheck.setSelected(false);
-		
-		mainController.toggleLibraryPane();
+		mainController.showLibrary();
 	}
 	
 	@FXML
@@ -60,7 +80,7 @@ public class MealEditorController extends Controller implements Initializable {
 		mealLunchCheck.setSelected(false);
 		mealDinnerCheck.setSelected(false);
 		
-		mainController.toggleLibraryPane();
+		mainController.showLibrary();
 	}
 
 }

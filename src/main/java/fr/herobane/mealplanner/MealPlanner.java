@@ -16,7 +16,7 @@ public class MealPlanner extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MealPlanner.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MainFrame.fxml"));
 		Parent root = loader.load();
 		
 		MainController mainController = loader.getController();

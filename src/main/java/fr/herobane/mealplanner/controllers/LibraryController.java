@@ -52,11 +52,11 @@ public class LibraryController extends Controller implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	// TODO : MealEditor part
+	// TODO : Right pane
 	// ***** FXML ELEMENTS HANDLING *****
 	@FXML
 	private void handleAddButton() {
-		mainController.toggleLibraryPane();
+		mainController.showMealEditor(null, false);
 	}
 	
 	@FXML
@@ -66,7 +66,7 @@ public class LibraryController extends Controller implements Initializable {
 	
 	@FXML
 	private void handleUpdateButton() {
-		// TODO : edit button
+		mainController.showMealEditor(mealListView.getSelectionModel().getSelectedItem(), true);
 	}
 	
 }

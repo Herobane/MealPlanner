@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import fr.herobane.mealplanner.models.beans.Meal;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -69,16 +70,20 @@ public class MainController extends Controller implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	// FIXME
-	public void toggleLibraryPane() {
-		if(libraryPane.getChildren().get(0).equals(library)) {
-			libraryPane.getChildren().clear();
-			libraryPane.getChildren().add(mealEditor);
-		}
-		else {
-			libraryPane.getChildren().clear();
-			libraryPane.getChildren().add(library);
-		}
+	
+	public void showMealEditor(Meal meal, boolean editMode) {
+		libraryPane.getChildren().clear();
+		libraryPane.getChildren().add(mealEditor);
+		
+		if(editMode)
+			mealEditorController.initEditMode((meal));
+		else
+			mealEditorController.initAddMode();
+	}
+	
+	public void showLibrary() {
+		libraryPane.getChildren().clear();
+		libraryPane.getChildren().add(library);
 	}
 
 }
