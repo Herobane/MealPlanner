@@ -76,10 +76,6 @@ public class MealEditorController extends Controller implements Initializable {
 	
 	@FXML
 	private void handleCancelButton() {
-		mealNameField.setText("");
-		mealLunchCheck.setSelected(false);
-		mealDinnerCheck.setSelected(false);
-		
 		mainController.showLibrary();
 	}
 

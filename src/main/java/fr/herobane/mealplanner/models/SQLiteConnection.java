@@ -10,6 +10,7 @@ public class SQLiteConnection {
 	
 	private SQLiteConnection() {}
 	
+	// TODO : database initialization/creation
 	public static Connection getInstance() {
 		if(connection == null) {
 			try {
@@ -22,6 +23,14 @@ public class SQLiteConnection {
 						+ "meal_lunch BOOLEAN,"
 						+ "meal_dinner BOOLEAN"
 						+ ")");
+				
+				connection.createStatement().executeUpdate(
+						"CREATE TABLE IF NOT EXISTS ingredients ("
+						+ "ingredient_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, "
+						+ "ingredient_name VARCHAR, "
+						+ "ingredient_measure VARCHAR"
+						+ ")");
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

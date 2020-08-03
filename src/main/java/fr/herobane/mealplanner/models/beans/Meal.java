@@ -1,37 +1,31 @@
 package fr.herobane.mealplanner.models.beans;
 
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
-public class Meal {
+public class Meal extends ObservableObject {
 
 	// TODO : Add more attributes
-	private LongProperty ID;
-	private StringProperty name;
 	private BooleanProperty isLunch;
 	private BooleanProperty isDinner;
 	
 	public Meal() {
-		ID = new SimpleLongProperty();
-		name = new SimpleStringProperty();
+		super();
+		
 		isLunch = new SimpleBooleanProperty();
 		isDinner = new SimpleBooleanProperty();
 	}
 	
 	public Meal(String name) {
-		ID = new SimpleLongProperty();
-		this.name = new SimpleStringProperty(name);
+		super(name);
+		
 		isLunch = new SimpleBooleanProperty();
 		isDinner = new SimpleBooleanProperty();
 	}
 	
 	public Meal(long ID, String name, boolean isLunch, boolean isDinner) {
-		this.ID = new SimpleLongProperty(ID);
-		this.name = new SimpleStringProperty(name);
+		super(ID, name);
+		
 		this.isLunch = new SimpleBooleanProperty(isLunch);
 		this.isDinner = new SimpleBooleanProperty(isDinner);
 	}
@@ -40,14 +34,6 @@ public class Meal {
 	public String toString() {
 		return getName() + " " + (this.isLunch() ? "lunch" : "nlunch") + " " + (this.isDinner() ? "dinner" : "ndinner");
 	}
-	
-	public long getID() { return ID.get(); }
-	public void setID(long ID) { this.ID.set(ID); }
-	public LongProperty getIDProperty() { return ID; }
-	
-	public String getName() { return name.get(); }
-	public void setName(String name) { this.name.set(name); }
-	public StringProperty getNameProperty() { return name; }
 	
 	public boolean isLunch() { return isLunch.get(); }
 	public void setLunch(boolean isLunch) { this.isLunch.set(isLunch); }

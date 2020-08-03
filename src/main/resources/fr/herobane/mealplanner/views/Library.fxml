@@ -30,21 +30,31 @@
                   </Button>
               </items>
             </ToolBar>
+            <Button fx:id="swapButton" mnemonicParsing="false" onAction="#handleSwapButton" text="Meals" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
          </children>
       </AnchorPane>
    </top>
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView fx:id="mealListView" prefHeight="200.0" prefWidth="400.0" HBox.hgrow="ALWAYS" />
+            <ListView fx:id="mealListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="400.0" HBox.hgrow="ALWAYS" />
             <VBox prefHeight="360.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label text="Meal name">
+                  <ImageView fx:id="mealImageSummary" fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="mealNameSummary" text="No selection">
                      <VBox.margin>
-                        <Insets left="10.0" />
+                        <Insets bottom="20.0" left="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </Label>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" spacing="50.0">
+                     <children>
+                        <ImageView fx:id="mealLunchSummary" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="mealDinnerSummary" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>

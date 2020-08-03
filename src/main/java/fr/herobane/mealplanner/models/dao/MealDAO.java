@@ -4,12 +4,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import fr.herobane.mealplanner.models.beans.Meal;
+import fr.herobane.mealplanner.models.beans.ObservableObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class MealDAO extends DAO<Meal> {
 	
-	private static ObservableList<Meal> meals = FXCollections.observableArrayList();
+	private static ObservableList<ObservableObject> meals = FXCollections.observableArrayList();
 	
 	@Override
 	public Meal find(long ID) {
@@ -23,7 +24,7 @@ public class MealDAO extends DAO<Meal> {
 							+ "WHERE meal_id=" + ID);
 			
 			if(result.first()) {
-				meal = new Meal(result.getString("meal_name"));
+				meal = new Meal(ID, result.getString("meal_name"), result.getBoolean("meal_lunch"), result.getBoolean("meal_dinner"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -81,7 +82,7 @@ public class MealDAO extends DAO<Meal> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return find(ID);
 	}
 	
 	/**
@@ -89,7 +90,7 @@ public class MealDAO extends DAO<Meal> {
 	 * @return a list containing fetched meals
 	 * @throws SQLException
 	 */
-	public ObservableList<Meal> getMeals() throws SQLException {
+	public ObservableList<ObservableObject> getMeals() throws SQLException {
 		meals.clear();
 		
 		ResultSet result = this.connection.createStatement().executeQuery("SELECT * FROM meals");

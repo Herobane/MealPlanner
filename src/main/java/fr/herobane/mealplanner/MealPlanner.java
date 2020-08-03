@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class MealPlanner extends Application {
@@ -16,7 +17,7 @@ public class MealPlanner extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MainFrame.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/herobane/mealplanner/views/MainFrame.fxml"));
 		Parent root = loader.load();
 		
 		MainController mainController = loader.getController();
@@ -25,9 +26,10 @@ public class MealPlanner extends Application {
 		
 		Scene scene = new Scene(root);
 		
+		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/appicon.png")));
 		primaryStage.setTitle("MealPlanner");
 		primaryStage.setScene(scene);
-//		primaryStage.setResizable(false);
+		primaryStage.setResizable(false);
 		primaryStage.show();
 		
 	}
