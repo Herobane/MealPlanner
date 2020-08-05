@@ -9,4 +9,9 @@ module mealplanner.core {
 	opens fr.herobane.mealplanner.controllers to javafx.fxml;
 	
 	exports fr.herobane.mealplanner;
+	exports fr.herobane.mealplanner.controllers;
+	exports fr.herobane.mealplanner.models;
+	exports fr.herobane.mealplanner.models.dao;
+	exports fr.herobane.mealplanner.models.beans;
+	exports fr.herobane.mealplanner.utils;
 }

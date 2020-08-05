@@ -8,9 +8,25 @@ import fr.herobane.mealplanner.models.beans.ObservableObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * <p> Meal Data Access Object </p>
+ * <p> Used to bind a meal in the application with an entry in the database. </p>
+ * 
+ * @author herobane
+ * 
+ */
 public class MealDAO extends DAO<Meal> {
 	
+	
+	// ***** CLASS VARIABLES *****
+	
+	/**
+	 * ObservableList that contains all the meals that are in the database.
+	 */
 	private static ObservableList<ObservableObject> meals = FXCollections.observableArrayList();
+	
+	
+	// ***** OVERRIDEN METHODS *****
 	
 	@Override
 	public Meal find(long ID) {
@@ -23,7 +39,7 @@ public class MealDAO extends DAO<Meal> {
 							"SELECT * FROM meals "
 							+ "WHERE meal_id=" + ID);
 			
-			if(result.first()) {
+			if(result.next()) {
 				meal = new Meal(ID, result.getString("meal_name"), result.getBoolean("meal_lunch"), result.getBoolean("meal_dinner"));
 			}
 		} catch (SQLException e) {
@@ -84,6 +100,9 @@ public class MealDAO extends DAO<Meal> {
 		}
 		return find(ID);
 	}
+	
+	
+	// ***** PUBLIC METHODS *****
 	
 	/**
 	 * Fetch the database and populate meals {@code ObservableList} according to request's results

@@ -9,9 +9,25 @@ import fr.herobane.mealplanner.utils.Measure;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * <p> Ingredient Data Access Object </p>
+ * <p> Used to bind an ingredient in the application with an entry in the database. </p>
+ * 
+ * @author herobane
+ * 
+ */
 public class IngredientDAO extends DAO<Ingredient> {
 
+	
+	// ***** CLASS VARIABLES *****
+	
+	/**
+	 * ObservableList that contains all the ingredients that are in the database.
+	 */
 	private static ObservableList<ObservableObject> ingredients = FXCollections.observableArrayList();
+	
+	
+	// ***** OVERRIDEN METHODS *****
 	
 	@Override
 	public Ingredient find(long ID) {
@@ -21,7 +37,7 @@ public class IngredientDAO extends DAO<Ingredient> {
 		try {
 			ResultSet result = this.connection.createStatement()
 					.executeQuery(
-							"SELECT * FROM ingredients"
+							"SELECT * FROM ingredients "
 							+ "WHERE ingredient_id=" + ID);
 			
 			if(result.next()) {
@@ -85,6 +101,9 @@ public class IngredientDAO extends DAO<Ingredient> {
 		
 		return find(ID);
 	}
+	
+	
+	// ***** PUBLIC METHODS *****
 	
 	/**
 	 * Fetch the database and populate ingredients {@code ObservableList} according to request's results

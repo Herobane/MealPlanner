@@ -12,6 +12,11 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
+/**
+ * @deprecated
+ * @author herobane
+ *
+ */
 public class MealEditorController extends Controller implements Initializable {
 
 	private MealDAO mealDAO;

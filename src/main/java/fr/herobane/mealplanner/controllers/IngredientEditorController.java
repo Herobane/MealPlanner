@@ -14,6 +14,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
+/**
+ * @deprecated
+ * @author herobane
+ *
+ */
 public class IngredientEditorController extends Controller implements Initializable {
 
 	private IngredientDAO ingredientDAO;

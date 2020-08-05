@@ -5,7 +5,8 @@ import java.sql.Connection;
 import fr.herobane.mealplanner.models.SQLiteConnection;
 
 /**
- * Base SuperClass for any Data Access Object
+ * <p> Base SuperClass for any Data Access Object </p>
+ * <p> Used to bind an object instance in the application with an entry in the database. </p>
  * @param <T> the generic type of the DAO
  * 
  * @author herobane
@@ -13,10 +14,15 @@ import fr.herobane.mealplanner.models.SQLiteConnection;
  */
 public abstract class DAO<T> {
 
+	
+	// ***** FIELDS *****
 	/**
 	 * Connection object to interact with the SQLite DataBase
 	 */
 	protected Connection connection = SQLiteConnection.getInstance();
+	
+	
+	// ***** ABSTRACT METHODS *****
 	
 	/**
 	 * Finds the corresponding object with its ID

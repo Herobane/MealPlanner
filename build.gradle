@@ -24,6 +24,12 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.base', 'javafx.graphics', 'javafx.fxml' ]
 }
 
+jlink {
+	launcher {
+		name = "MealPlannerLauncher"
+	}
+}
+
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
@@ -40,7 +46,7 @@ dependencies {
     
     // api 'org.xerial:sqlite-jdbc:3.30.1'
     
-    compile group:'org.xerial', name:'sqlite-jdbc', version:'3.30.1'
+    runtimeClasspath group:'org.xerial', name:'sqlite-jdbc', version:'3.30.1'
     // runtime 'org.xerial:sqlite-jdbc:3.30.1'
 
     // Use JUnit test framework
