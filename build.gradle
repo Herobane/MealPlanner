@@ -15,7 +15,7 @@ plugins {
 }
 
 application {
-	mainClassName = "fr.herobane.mealplanner.MealPlanner"
+	mainClass = "fr.herobane.mealplanner.MealPlanner"
 	mainModule = "mealplanner.core"
 }
 
